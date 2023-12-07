@@ -7,11 +7,12 @@ app.use(bodyParser.json());
 app.use(cors());
 import db from './db.cjs'; 
 
+
 // Endpoint para insertar entrada del empleado
 app.post('/api/registrarEntrada', (req, res) => {
-    const { parametro1, parametro2, parametro3, parametro4, parametro5, parametro6 } = req.body;
+    const { iTipo, iGEEMCodigo, iGESUCodigo, iPEEMCodigo, iPEVATipo, iMant } = req.body;
     const sql = `CALL PEREmpleadoVerificaHuella_AltMod(?,?,?,?,?,?)`;
-  db.query(sql,[parametro1, parametro2, parametro3, parametro4, parametro5, parametro6], function (error, results){
+  db.query(sql,[iTipo, iGEEMCodigo, iGESUCodigo, iPEEMCodigo, iPEVATipo, iMant], function (error, results){
     if (error) {
       console.error('Error al ejecutar la consulta:', error);
       res.status(500).send('Error al obtener datos');
@@ -29,9 +30,9 @@ app.listen(3000, () => {
 
 // Endpoint para insertar salida del empleado
 app.post('/api/registrarSalida', (req, res) => {
-    const { parametro1, parametro2, parametro3, parametro4, parametro5, parametro6 } = req.body;
+    const { iTipo, iGEEMCodigo, iGESUCodigo, iPEEMCodigo, iPEVATipo, iMant } = req.body;
     const sql = `CALL PEREmpleadoVerificaHuella_AltMod(?,?,?,?,?,?)`;
-  db.query(sql,[parametro1, parametro2, parametro3, parametro4, parametro5, parametro6], function (error, results){
+  db.query(sql,[iTipo, iGEEMCodigo, iGESUCodigo, iPEEMCodigo, iPEVATipo, iMant], function (error, results){
     if (error) {
       console.error('Error al ejecutar la consulta:', error);
       res.status(500).send('Error al obtener datos');
